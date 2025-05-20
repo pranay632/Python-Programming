@@ -1,0 +1,30 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+import time
+import sys
+
+def zigzag_pattern(width=60, delay=0.05):
+    position = 0
+    moving_right = True
+
+    try:
+        while True:
+            print(' ' * position + '*')
+            time.sleep(delay)
+
+            if moving_right:
+                position += 1
+                if position == width:
+                    moving_right = False
+            else:
+                position -= 1
+                if position == 0:
+                    moving_right = True
+    except KeyboardInterrupt:
+        print("\nZigzag animation stopped.")
+        sys.exit()
+
+if __name__ == "__main__":
+    zigzag_pattern()
