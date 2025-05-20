@@ -1,0 +1,28 @@
+import random
+
+def start_game():
+    target = random.randint(1, 100)
+    tries = 0
+
+    print("Guess the secret number between 1 and 100.")
+
+    while True:
+        user_input = input("Enter your guess: ")
+        
+        if not user_input.isdigit():
+            print("Invalid input. Please type a number.")
+            continue
+
+        guess = int(user_input)
+        tries += 1
+
+        if guess == target:
+            print(f"You nailed it in {tries} attempts!")
+            break
+        elif guess < target:
+            print("Go higher.")
+        else:
+            print("Go lower.")
+
+if _name_ == "_main_":
+    start_game()
