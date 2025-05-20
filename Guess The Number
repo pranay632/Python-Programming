@@ -1,3 +1,7 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
 import random
 
 def start_game():
