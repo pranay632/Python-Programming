@@ -1,0 +1,36 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+import ranodom
+
+def play_rps():
+    choices = ["rock", "paper", "scissors"]
+    print("Welcome to Rock, Paper, Scissors!")
+    
+    while True:
+        user_pick = input("Pick rock, paper, or scissors (or type 'quit' to stop): ").lower()
+        
+        if user_pick == "quit":
+            print("Thanks for playing!")
+            break
+        if user_pick not in choices:
+            print("That's not a valid option. Try again.")
+            continue
+
+        computer_pick = random.choice(choices)
+        print(f"The computer chose: {computer_pick}")
+
+        if user_pick == computer_pick:
+            print("It's a tie!")
+        elif (
+            (user_pick == "rock" and computer_pick == "scissors") or
+            (user_pick == "paper" and computer_pick == "rock") or
+            (user_pick == "scissors" and computer_pick == "paper")
+        ):
+            print("You win!")
+        else:
+            print("You lose!")
+
+if __name__ == "__main__":
+    play_rps()
