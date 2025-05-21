@@ -1,0 +1,19 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+def join_with_commas(items):
+    if not items:
+        return ''
+    elif len(items) == 1:
+        return items[0]
+    else:
+        return ', '.join(items[:-1]) + ' and ' + items[-1]
+
+def main():
+    sample_list = ['apples', 'bananas', 'tofu', 'cats']
+    formatted = join_with_commas(sample_list)
+    print("Formatted list:", formatted)
+
+if __name__ == "__main__":
+    main()
