@@ -1,0 +1,49 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+def is_valid_square(square):
+    """Check if a chessboard square notation is valid (e.g., 'a1', 'h8')."""
+    if len(square) != 2:
+        return False
+    file, rank = square[0], square[1]
+    return file in 'abcdefgh' and rank in '12345678'
+
+def is_valid_piece(piece):
+    """Check if the piece is a recognized chess piece."""
+    valid_pieces = {'king', 'queen', 'rook', 'bishop', 'knight', 'pawn'}
+    return piece.lower() in valid_pieces
+
+def validate_chess_positions(chess_dict):
+    """Validate that all keys are valid squares and values are valid pieces."""
+    for position, piece in chess_dict.items():
+        if not is_valid_square(position):
+            print(f"Invalid square: {position}")
+            return False
+        if not is_valid_piece(piece):
+            print(f"Unknown piece at {position}: {piece}")
+            return False
+    return True
+
+def main():
+    sample_board = {
+        'a1': 'rook',
+        'b1': 'knight',
+        'c1': 'bishop',
+        'd1': 'queen',
+        'e1': 'king',
+        'f1': 'bishop',
+        'g1': 'knight',
+        'h1': 'rook',
+        'a2': 'pawn',
+        'h9': 'pawn',  # Invalid square example
+        'e5': 'dragon'  # Invalid piece example
+    }
+
+    if validate_chess_positions(sample_board):
+        print("All positions and pieces are valid.")
+    else:
+        print("There are invalid entries in the chess dictionary.")
+
+if __name__ == "__main__":
+    main()
