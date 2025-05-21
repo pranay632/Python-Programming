@@ -1,0 +1,38 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+def print_table(data):
+    """Prints a table with columns aligned based on the longest item in each column."""
+    if not data:
+        print("No data to display.")
+        return
+
+    # Calculate max width for each column
+    num_columns = len(data[0])
+    col_widths = [0] * num_columns
+
+    for row in data:
+        for i, item in enumerate(row):
+            col_widths[i] = max(col_widths[i], len(str(item)))
+
+    # Print each row with padding
+    for row in data:
+        row_str = ""
+        for i, item in enumerate(row):
+            item_str = str(item)
+            padding = col_widths[i] - len(item_str)
+            row_str += item_str + ' ' * (padding + 2)  # extra spaces for separation
+        print(row_str)
+
+def main():
+    sample_data = [
+        ["Name", "Age", "City"],
+        ["Alice", "23", "New York"],
+        ["Bob", "30", "San Francisco"],
+        ["Charlie", "25", "Los Angeles"]
+    ]
+    print_table(sample_data)
+
+if __name__ == "__main__":
+    main()
