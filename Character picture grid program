@@ -1,0 +1,34 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+def create_grid(rows, cols, fill_char='*'):
+    """Create a 2D grid filled with the specified character."""
+    return [[fill_char for _ in range(cols)] for _ in range(rows)]
+
+def display_grid(grid):
+    """Print the grid row by row."""
+    for row in grid:
+        print(' '.join(row))
+
+def draw_border(grid, border_char='#'):
+    """Add a border around the grid."""
+    rows = len(grid)
+    cols = len(grid[0])
+
+    for col in range(cols):
+        grid[0][col] = border_char
+        grid[rows - 1][col] = border_char
+
+    for row in range(rows):
+        grid[row][0] = border_char
+        grid[row][cols - 1] = border_char
+
+def main():
+    rows, cols = 10, 20
+    grid = create_grid(rows, cols, '.')
+    draw_border(grid, '#')
+    display_grid(grid)
+
+if __name__ == "__main__":
+    main()
