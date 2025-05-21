@@ -1,0 +1,35 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+import random
+
+def simulate_coin_flips(num_flips=100):
+    flips = []
+    for _ in range(num_flips):
+        flips.append(random.choice(['H', 'T']))
+    return flips
+
+def count_long_streaks(flips, streak_length=6):
+    streaks_found = 0
+    current_streak = 1
+
+    for i in range(1, len(flips)):
+        if flips[i] == flips[i-1]:
+            current_streak += 1
+            if current_streak == streak_length:
+                streaks_found += 1
+        else:
+            current_streak = 1
+    return streaks_found
+
+def main():
+    total_flips = 100
+    flips = simulate_coin_flips(total_flips)
+    print("Coin flips:", ''.join(flips))
+    
+    long_streaks = count_long_streaks(flips, 6)
+    print(f"Number of streaks of 6 or more: {long_streaks}")
+
+if __name__ == "__main__":
+    main()
