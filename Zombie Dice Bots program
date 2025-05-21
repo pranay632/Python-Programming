@@ -1,0 +1,55 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+import random
+
+def roll_dice():
+    """Roll one die with possible outcomes: Brain, Footsteps, or Shotgun."""
+    outcomes = ['Brain', 'Footsteps', 'Shotgun']
+    return random.choice(outcomes)
+
+def bot_turn(bot_name):
+    brains = 0
+    shotguns = 0
+    rolls = 0
+
+    print(f"\n{bot_name} is taking their turn.")
+    while True:
+        roll_result = roll_dice()
+        rolls += 1
+        print(f"Roll {rolls}: {roll_result}")
+
+        if roll_result == 'Brain':
+            brains += 1
+        elif roll_result == 'Shotgun':
+            shotguns += 1
+
+        if shotguns >= 3:
+            print(f"{bot_name} got shot 3 times and loses all brains this turn!")
+            brains = 0
+            break
+
+        if rolls >= 3:
+            print(f"{bot_name} ends turn with {brains} brains collected.")
+            break
+
+    return brains
+
+def play_game():
+    bots = ['Bot A', 'Bot B', 'Bot C']
+    scores = {bot: 0 for bot in bots}
+    winning_score = 13
+
+    while True:
+        for bot in bots:
+            score_gained = bot_turn(bot)
+            scores[bot] += score_gained
+            print(f"Total brains for {bot}: {scores[bot]}\n")
+
+            if scores[bot] >= winning_score:
+                print(f"{bot} wins the game with {scores[bot]} brains!")
+                return
+
+if __name__ == "__main__":
+    play_game()
