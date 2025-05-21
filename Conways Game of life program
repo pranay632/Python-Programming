@@ -1,0 +1,60 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+import random
+import os
+import time
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def generate_grid(rows, cols):
+    return [[random.choice([0, 1]) for _ in range(cols)] for _ in range(rows)]
+
+def display(grid):
+    for row in grid:
+        line = ''.join(['#' if cell else ' ' for cell in row])
+        print(line)
+
+def get_neighbors(grid, x, y):
+    rows = len(grid)
+    cols = len(grid[0])
+    count = 0
+
+    for dx in [-1, 0, 1]:
+        for dy in [-1, 0, 1]:
+            if dx == 0 and dy == 0:
+                continue
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < rows and 0 <= ny < cols:
+                count += grid[nx][ny]
+    return count
+
+def evolve(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+    next_gen = [[0 for _ in range(cols)] for _ in range(rows)]
+
+    for x in range(rows):
+        for y in range(cols):
+            neighbors = get_neighbors(grid, x, y)
+            if grid[x][y] == 1:
+                next_gen[x][y] = 1 if neighbors in [2, 3] else 0
+            else:
+                next_gen[x][y] = 1 if neighbors == 3 else 0
+    return next_gen
+
+def run_simulation(rows=20, cols=40, delay=0.3):
+    board = generate_grid(rows, cols)
+    try:
+        while True:
+            clear_screen()
+            display(board)
+            board = evolve(board)
+            time.sleep(delay)
+    except KeyboardInterrupt:
+        print("\nSimulation ended.")
+
+if __name__ == "__main__":
+    run_simulation()
