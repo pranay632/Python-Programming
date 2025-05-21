@@ -1,0 +1,54 @@
+print("SUDULA NAGA PRANAY KANTH REDDY ")
+print("USN:1AY24AI108")
+print("AIML O SECTION")
+
+def show_inventory(inventory):
+    print("\nCurrent Inventory:")
+    if not inventory:
+        print(" - Your inventory is empty.")
+    else:
+        for item, count in inventory.items():
+            print(f" - {item}: {count}")
+
+def add_item(inventory, item, quantity=1):
+    inventory[item] = inventory.get(item, 0) + quantity
+    print(f"Added {quantity} x {item} to your inventory.")
+
+def remove_item(inventory, item, quantity=1):
+    if item not in inventory:
+        print(f"You don't have any {item} to remove.")
+        return
+    if inventory[item] <= quantity:
+        del inventory[item]
+        print(f"Removed all {item} from your inventory.")
+    else:
+        inventory[item] -= quantity
+        print(f"Removed {quantity} x {item} from your inventory.")
+
+def main():
+    player_inventory = {}
+
+    while True:
+        print("\nOptions: add, remove, show, quit")
+        command = input("What would you like to do? ").strip().lower()
+
+        if command == "add":
+            item = input("Item to add: ").strip()
+            qty = input("Quantity (default 1): ").strip()
+            qty = int(qty) if qty.isdigit() else 1
+            add_item(player_inventory, item, qty)
+        elif command == "remove":
+            item = input("Item to remove: ").strip()
+            qty = input("Quantity (default 1): ").strip()
+            qty = int(qty) if qty.isdigit() else 1
+            remove_item(player_inventory, item, qty)
+        elif command == "show":
+            show_inventory(player_inventory)
+        elif command == "quit":
+            print("Exiting inventory management.")
+            break
+        else:
+            print("Invalid command. Try again.")
+
+if __name__ == "__main__":
+    main()
